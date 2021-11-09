@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "pokeapi-typescript": "^2.1.0",
     "tailwindcss": "^2.2.19",
     "vue": "^3.2.16"
   },
