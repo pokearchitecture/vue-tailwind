@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
-import PokeAPI, { INamedApiResource, IPokemon } from 'pokeapi-typescript';
+import PokeAPI from 'pokeapi-typescript';
+import Toggle from './Toggle.vue';
 
 interface PokemonListViewModel {
+  id: number;
   name: string;
   imageUrl: string;
 }
@@ -10,31 +12,63 @@ interface PokemonListViewModel {
 let pokemonList = ref<Array<PokemonListViewModel>>();
 
 onBeforeMount(async () => {
-  const imageUrlRoot = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
-  
+  const imageUrlRoot =
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+
   const response = await PokeAPI.Pokemon.list(151);
-  
-  pokemonList.value = response.results.map(item => {
-    const url = item.url.slice(0, item.url.length-1)
-    const pokemonId = url.slice(url.lastIndexOf('/')+1)
-    
+
+  pokemonList.value = response.results.map((item) => {
+    const url = item.url.slice(0, item.url.length - 1);
+    const pokemonId = url.slice(url.lastIndexOf('/') + 1);
+    const id = parseInt(pokemonId);
+
+    if (isNaN(id)) {
+      console.error('Failed to parse pokemon id');
+      return {} as PokemonListViewModel;
+    }
+
     return {
       name: item.name,
-      imageUrl: `${imageUrlRoot}${pokemonId}.png`
-    }
-  })
+      id,
+      imageUrl: `${imageUrlRoot}${pokemonId}.png`,
+    };
+  });
 });
 </script>
 
 <template>
   <div class="pl-5">
     <div class="flex justify-center">
-      <ul class="list-disc">
-        <li v-for="pokemon in pokemonList" class="flex items-center">
-          <div class="flex items-center"> {{ pokemon.name }} </div>
-          <img :src="pokemon.imageUrl">
-        </li>
-      </ul>
+      <div>
+        <ul>
+          <li v-for="pokemon in pokemonList" :key="pokemon.id">
+            <div
+              class="
+                flex
+                justify-between
+                bg-gray-600
+                my-3
+                py-5
+                px-7
+                rounded-2xl
+              "
+            >
+              <div class="pr-5">
+                <div
+                  class="text-white text-2xl font-bold leading-10 capitalize"
+                >
+                  {{ pokemon.name }}
+                </div>
+                <div class="text-gray-400">National Dex #{{ pokemon.id }}</div>
+                <Toggle :label="'Caught'" />
+              </div>
+              <img :src="pokemon.imageUrl" />
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
+
+<style></style>

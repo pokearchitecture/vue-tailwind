@@ -7,4 +7,7 @@ import PokemonList from './components/PokemonList.vue';
 </template>
 
 <style>
+#app {
+  background-color: #dcdcdc;
+}
 </style>
