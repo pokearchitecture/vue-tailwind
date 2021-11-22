@@ -37,35 +37,17 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="pl-5">
-    <div class="flex justify-center">
-      <div>
-        <ul>
-          <li v-for="pokemon in pokemonList" :key="pokemon.id">
-            <div
-              class="
-                flex
-                justify-between
-                bg-gray-600
-                my-3
-                py-5
-                px-7
-                rounded-2xl
-              "
-            >
-              <div class="pr-5">
-                <div
-                  class="text-white text-2xl font-bold leading-10 capitalize"
-                >
-                  {{ pokemon.name }}
-                </div>
-                <div class="text-gray-400">National Dex #{{ pokemon.id }}</div>
-                <Toggle :label="'Caught'" />
-              </div>
-              <img :src="pokemon.imageUrl" />
-            </div>
-          </li>
-        </ul>
+  <div class="flex justify-center flex-wrap">
+    <div v-for="pokemon in pokemonList" :key="pokemon.id" class="mt-3 mr-3">
+      <div class="flex justify-between bg-gray-600 py-5 px-7 rounded-2xl">
+        <div class="pr-5">
+          <div class="text-white text-2xl font-bold leading-10 capitalize">
+            {{ pokemon.name }}
+          </div>
+          <div class="text-gray-400">National Dex #{{ pokemon.id }}</div>
+          <Toggle :label="'Caught'" />
+        </div>
+        <img :src="pokemon.imageUrl" />
       </div>
     </div>
   </div>
