@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import PokemonList from './components/PokemonList.vue';
+import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
   <header></header>
-  <aside></aside>
+  <aside>
+    <div class="pt-3">
+      <Navbar />
+    </div>
+  </aside>
   <main>
     <PokemonList />
   </main>
@@ -32,7 +37,7 @@ header {
 }
 
 aside {
-  background-color: #213e48;
+  background-color: rgba(55, 65, 81, 1);
 }
 
 main {
