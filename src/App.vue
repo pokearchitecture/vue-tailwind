@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PokemonList from './components/PokemonList.vue';
 import Navbar from './components/Navbar.vue';
+import VueRouter from 'vue-router';
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import Navbar from './components/Navbar.vue';
     </div>
   </aside>
   <main>
-    <PokemonList />
+    <router-view></router-view>
   </main>
 </template>
 
