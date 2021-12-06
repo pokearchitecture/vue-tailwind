@@ -1,29 +1,32 @@
 <script setup lang="ts">
-  const props = defineProps<{
-    label: String
-  }>()
+const props = defineProps<{
+  label: String;
+}>();
 </script>
 
 <template>
-  <label class="flex justify-center items-center p-2 pl-0 text-xl relative group text-white">
+  <label
+    class="
+      flex
+      justify-center
+      items-center
+      p-2
+      pl-0
+      text-xl
+      relative
+      group
+      text-white
+    "
+  >
     {{ props.label }}
     <input
       type="checkbox"
-      class="
-        appearance-none
-        peer
-        absolute
-        left-0
-        top-0
-        w-full
-        h-full
-        rounded-md
-      "
+      class="appearance-none peer absolute left-0 top-0 h-full rounded-md"
     />
     <span
       class="
-        w-16
-        h-10
+        w-12
+        h-7
         flex
         items-center
         flex-shrink-0
@@ -34,13 +37,13 @@
         peer-checked:bg-green-400
         duration-300
         ease-in-out
-        after:w-8
-        after:h-8
+        after:w-5
+        after:h-5
         after:bg-white
         after:rounded-full
         after:shadow-md
         after:duration-300
-        peer-checked:after:translate-x-6
+        peer-checked:after:translate-x-5
         group-hover:after:translate-x-1
       "
     ></span>
