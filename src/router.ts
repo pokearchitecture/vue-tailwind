@@ -7,6 +7,7 @@ import Unova from './pages/Unova.vue';
 import Kalos from './pages/Kalos.vue';
 import Alola from './pages/Alola.vue';
 import Galar from './pages/Galar.vue';
+import All from './pages/All.vue';
 
 const routes = [
   { path: '/', component: Kanto },
@@ -18,6 +19,7 @@ const routes = [
   { path: '/kalos', component: Kalos },
   { path: '/alola', component: Alola },
   { path: '/galar', component: Galar },
+  { path: '/all', component: All },
 ]
 
 const router = createRouter({

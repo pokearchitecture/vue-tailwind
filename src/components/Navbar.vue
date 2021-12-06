@@ -5,6 +5,9 @@
 <template>
   <div class="text-white text-2xl font-bold">
     <div class="py-2 w-full text-center hover:bg-gray-500 cursor-pointer">
+      <router-link to="all">All Regions</router-link>
+    </div>
+    <div class="py-2 w-full text-center hover:bg-gray-500 cursor-pointer">
       <router-link to="kanto">Kanto</router-link>
     </div>
     <div class="py-2 w-full text-center hover:bg-gray-500 cursor-pointer">
