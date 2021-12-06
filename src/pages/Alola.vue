@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PokemonList from '../components/PokemonList.vue';
+</script>
 
 <template>
-  <div>Alola</div>
+  <PokemonList :start="722" :end="809" />
 </template>
