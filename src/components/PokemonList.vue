@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount, ref, toRefs, defineProps } from 'vue';
 import PokeAPI from 'pokeapi-typescript';
 import Toggle from './Toggle.vue';
 
@@ -9,13 +9,26 @@ interface PokemonListViewModel {
   imageUrl: string;
 }
 
+const props = defineProps({
+  start: {
+    type: Number,
+    required: true,
+  },
+  end: {
+    type: Number,
+    required: true,
+  },
+})
+
+const { start, end } = toRefs(props)
+
 let pokemonList = ref<Array<PokemonListViewModel>>();
 
 onBeforeMount(async () => {
   const imageUrlRoot =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
-  const response = await PokeAPI.Pokemon.list(151);
+  const response = await PokeAPI.Pokemon.list(end.value - (start.value - 1), (start.value - 1))
 
   pokemonList.value = response.results.map((item) => {
     const url = item.url.slice(0, item.url.length - 1);
