@@ -2,6 +2,15 @@
 const props = defineProps<{
   label: String;
 }>();
+
+const emit = defineEmits<{
+  (event: 'toggled', isToggled: boolean): void;
+}>();
+
+function emitChangeEvent(event: Event) {
+  const htmlInput = event.target as HTMLInputElement;
+  emit('toggled', htmlInput.checked);
+}
 </script>
 
 <template>
@@ -22,6 +31,7 @@ const props = defineProps<{
     <input
       type="checkbox"
       class="appearance-none peer absolute left-0 top-0 h-full rounded-md"
+      @change="emitChangeEvent"
     />
     <span
       class="
