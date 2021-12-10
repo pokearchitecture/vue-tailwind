@@ -33,7 +33,7 @@ function handleIsCaught(isToggled: boolean) {
 </script>
 
 <template>
-  <div class="bg-gray-600 py-5 px-7 rounded-2xl">
+  <div class="bg-darkgray-300 py-5 px-7 rounded-2xl">
     <div class="flex justify-between">
       <div class="pr-5">
         <div class="text-white text-2xl font-bold leading-10 capitalize">

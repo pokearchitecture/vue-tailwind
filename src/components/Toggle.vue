@@ -44,7 +44,7 @@ function emitToggledEvent(event: Event) {
         flex-shrink-0
         ml-4
         p-1
-        bg-gray-300
+        bg-gray-500
         rounded-full
         peer-checked:bg-green-400
         duration-300
