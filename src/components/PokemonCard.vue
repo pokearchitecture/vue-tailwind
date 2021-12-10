@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRefs, PropType } from 'vue';
+import { toRefs, PropType, ref } from 'vue';
 import { PokemonCardViewModel } from './PokemonCardViewModel';
 import Toggle from './Toggle.vue';
 
@@ -11,6 +11,25 @@ const props = defineProps({
 });
 
 const { pokemon } = toRefs(props);
+
+const isSeen = ref(false);
+const isCaught = ref(false);
+
+function handleIsSeen(isToggled: boolean) {
+  isSeen.value = isToggled;
+
+  if (isToggled === false) {
+    isCaught.value = false;
+  }
+}
+
+function handleIsCaught(isToggled: boolean) {
+  isCaught.value = isToggled;
+
+  if (isToggled === true) {
+    isSeen.value = true;
+  }
+}
 </script>
 
 <template>
@@ -28,9 +47,17 @@ const { pokemon } = toRefs(props);
 
     <div class="flex">
       <div class="pr-3">
-        <Toggle :label="'Seen'" />
+        <Toggle
+          :label="'Seen'"
+          v-model:is-toggled="isSeen"
+          @update:is-toggled="handleIsSeen"
+        />
       </div>
-      <Toggle :label="'Caught'" />
+      <Toggle
+        :label="'Caught'"
+        v-model:is-toggled="isCaught"
+        @update:is-toggled="handleIsCaught"
+      />
     </div>
   </div>
 </template>

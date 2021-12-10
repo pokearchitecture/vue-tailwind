@@ -1,15 +1,16 @@
 <script setup lang="ts">
 const props = defineProps<{
-  label: String;
+  label: string;
+  isToggled: boolean;
 }>();
 
 const emit = defineEmits<{
-  (event: 'toggled', isToggled: boolean): void;
+  (event: 'update:isToggled', isToggled: boolean): void;
 }>();
 
-function emitChangeEvent(event: Event) {
+function emitToggledEvent(event: Event) {
   const htmlInput = event.target as HTMLInputElement;
-  emit('toggled', htmlInput.checked);
+  emit('update:isToggled', htmlInput.checked);
 }
 </script>
 
@@ -31,7 +32,8 @@ function emitChangeEvent(event: Event) {
     <input
       type="checkbox"
       class="appearance-none peer absolute left-0 top-0 h-full rounded-md"
-      @change="emitChangeEvent"
+      v-model="isToggled"
+      @change="emitToggledEvent"
     />
     <span
       class="
