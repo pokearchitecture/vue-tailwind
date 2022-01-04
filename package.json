@@ -7,12 +7,15 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.4.0",
+    "lodash": "^4.17.21",
     "pokeapi-typescript": "^2.1.0",
-    "tailwindcss": "^2.2.19",
+    "tailwindcss": "^3.0.9",
     "vue": "^3.2.16",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.178",
     "@vitejs/plugin-vue": "^1.9.3",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.3.11",
