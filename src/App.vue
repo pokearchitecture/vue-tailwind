@@ -3,7 +3,11 @@ import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
-  <header class="bg-darkgray-100"></header>
+  <header class="bg-darkgray-100">
+    <div class="text-green-400 flex items-center h-full pl-3 font-bold">
+      vue - tailwind
+    </div>
+  </header>
   <aside class="bg-darkgray-300">
     <Navbar />
   </aside>
