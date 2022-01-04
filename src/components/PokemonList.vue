@@ -3,6 +3,7 @@ import { onBeforeMount, ref, toRefs } from 'vue';
 import PokeAPI from 'pokeapi-typescript';
 import { PokemonCardViewModel } from './PokemonCardViewModel';
 import PokemonCard from './PokemonCard.vue';
+import SearchBar from './search-bar/SearchBar.vue';
 
 const props = defineProps({
   start: {
@@ -17,7 +18,9 @@ const props = defineProps({
 
 const { start, end } = toRefs(props);
 
-let pokemonList = ref<Array<PokemonCardViewModel>>();
+let pokemonList = ref<Array<PokemonCardViewModel>>([]);
+let filteredPokemonList = ref<Array<PokemonCardViewModel>>([]);
+let isLoaded = ref(false);
 
 onBeforeMount(async () => {
   const imageUrlRoot =
@@ -44,14 +47,34 @@ onBeforeMount(async () => {
       imageUrl: `${imageUrlRoot}${pokemonId}.png`,
     };
   });
+  filteredPokemonList.value = pokemonList.value;
+
+  isLoaded.value = true;
 });
 </script>
 
 <template>
-  <div class="flex justify-center flex-wrap">
-    <div v-for="pokemon in pokemonList" :key="pokemon.id" class="mt-3 mr-3">
-      <PokemonCard :pokemon="pokemon" />
+  <div>
+    <div v-if="isLoaded" class="flex justify-center flex-wrap px-8 mt-4">
+      <div class="basis-full mx-2">
+        <SearchBar
+          :items="pokemonList"
+          @update:filtered-list="
+            (filteredList) => (filteredPokemonList = filteredList)
+          "
+        />
+      </div>
+
+      <div
+        v-for="pokemon in filteredPokemonList"
+        :key="pokemon.id"
+        class="mt-3 mx-2 grow"
+      >
+        <PokemonCard :pokemon="pokemon" />
+      </div>
     </div>
+
+    <div v-else class="text-white">Loading...</div>
   </div>
 </template>
 
