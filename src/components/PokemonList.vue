@@ -4,6 +4,7 @@ import PokeAPI from 'pokeapi-typescript';
 import { PokemonCardViewModel } from './PokemonCardViewModel';
 import PokemonCard from './PokemonCard.vue';
 import SearchBar from './search-bar/SearchBar.vue';
+import Spinner from './spinner/Spinner.vue';
 
 const props = defineProps({
   start: {
@@ -54,7 +55,7 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div>
+  <div class="h-full">
     <div v-if="isLoaded" class="flex justify-center flex-wrap px-8 mt-4">
       <div class="basis-full mx-2">
         <SearchBar
@@ -74,7 +75,7 @@ onBeforeMount(async () => {
       </div>
     </div>
 
-    <div v-else class="text-white">Loading...</div>
+    <Spinner v-else />
   </div>
 </template>
 
