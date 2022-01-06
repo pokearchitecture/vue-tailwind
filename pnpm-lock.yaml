@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@heroicons/vue': ^1.0.5
   '@tailwindcss/forms': ^0.4.0
   '@types/lodash': ^4.14.178
   '@vitejs/plugin-vue': ^1.9.3
@@ -16,6 +17,7 @@ specifiers:
   vue-tsc: ^0.3.0
 
 dependencies:
+  '@heroicons/vue': 1.0.5_vue@3.2.21
   '@tailwindcss/forms': 0.4.0_tailwindcss@3.0.9
   lodash: 4.17.21
   pokeapi-typescript: 2.1.0
@@ -86,6 +88,14 @@ packages:
   /@emmetio/scanner/1.0.0:
     resolution: {integrity: sha512-8HqW8EVqjnCmWXVpqAOZf+EGESdkR27odcMMMGefgKXtar00SoYNSryGv//TELI4T3QFsECo78p+0lmalk/CFA==}
     dev: true
+
+  /@heroicons/vue/1.0.5_vue@3.2.21:
+    resolution: {integrity: sha512-idWtp20Fjr7mqnD7EdGDUDi83oWHnx3SwyuQY6GZyF33OApzpBOLxz7xa4t6rPOddGz9tI5RGnndLk+ake7ijQ==}
+    peerDependencies:
+      vue: '>= 3'
+    dependencies:
+      vue: 3.2.21
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
