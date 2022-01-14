@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { toRefs, PropType, ref } from 'vue';
+import { toRefs, PropType, ref, inject } from 'vue';
 import { PokemonCardViewModel } from './PokemonCardViewModel';
 import Toggle from './Toggle.vue';
+import { toggleCaughtKey, toggleSeenKey } from './lib';
 
 const props = defineProps({
   pokemon: {
@@ -11,24 +12,23 @@ const props = defineProps({
 });
 
 const { pokemon } = toRefs(props);
+const seen = inject(toggleSeenKey);
+const caught = inject(toggleCaughtKey);
 
-const isSeen = ref(false);
-const isCaught = ref(false);
-
-function handleIsSeen(isToggled: boolean) {
-  isSeen.value = isToggled;
-
-  if (isToggled === false) {
-    isCaught.value = false;
+function onSeen(isToggled: boolean) {
+  if (!seen) {
+    return;
   }
+
+  seen(props.pokemon.id, isToggled);
 }
 
-function handleIsCaught(isToggled: boolean) {
-  isCaught.value = isToggled;
-
-  if (isToggled === true) {
-    isSeen.value = true;
+function onCaught(isToggled: boolean) {
+  if (!caught) {
+    return;
   }
+
+  caught(props.pokemon.id, isToggled);
 }
 </script>
 
@@ -49,14 +49,14 @@ function handleIsCaught(isToggled: boolean) {
       <div class="pr-3">
         <Toggle
           :label="'Seen'"
-          v-model:is-toggled="isSeen"
-          @update:is-toggled="handleIsSeen"
+          v-model:is-toggled="pokemon.seen"
+          @update:is-toggled="onSeen"
         />
       </div>
       <Toggle
         :label="'Caught'"
-        v-model:is-toggled="isCaught"
-        @update:is-toggled="handleIsCaught"
+        v-model:is-toggled="pokemon.caught"
+        @update:is-toggled="onCaught"
       />
     </div>
   </div>

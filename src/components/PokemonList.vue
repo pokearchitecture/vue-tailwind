@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onBeforeMount, ref, toRefs } from 'vue';
-import PokeAPI from 'pokeapi-typescript';
-import { PokemonCardViewModel } from './PokemonCardViewModel';
+import { onBeforeMount, provide, ref, toRefs } from 'vue';
+import { usePokemonList } from './pokemonGateway';
 import PokemonCard from './PokemonCard.vue';
 import SearchBar from './search-bar/SearchBar.vue';
 import Spinner from './spinner/Spinner.vue';
+import { toggleCaughtKey, toggleSeenKey } from './lib';
 
 const props = defineProps({
   start: {
@@ -18,40 +18,24 @@ const props = defineProps({
 });
 
 const { start, end } = toRefs(props);
-
-let pokemonList = ref<Array<PokemonCardViewModel>>([]);
-let filteredPokemonList = ref<Array<PokemonCardViewModel>>([]);
+const {
+  pokemonList,
+  filteredPokemonList,
+  getPokemonList,
+  markPokemonAsSeen,
+  markPokemonAsCaught,
+} = usePokemonList();
 let isLoaded = ref(false);
 
 onBeforeMount(async () => {
-  const imageUrlRoot =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
-
-  const response = await PokeAPI.Pokemon.list(
-    end.value - (start.value - 1),
-    start.value - 1
-  );
-
-  pokemonList.value = response.results.map((item) => {
-    const url = item.url.slice(0, item.url.length - 1);
-    const pokemonId = url.slice(url.lastIndexOf('/') + 1);
-    const id = parseInt(pokemonId);
-
-    if (isNaN(id)) {
-      console.error('Failed to parse pokemon id');
-      return {} as PokemonCardViewModel;
-    }
-
-    return {
-      name: item.name,
-      id,
-      imageUrl: `${imageUrlRoot}${pokemonId}.png`,
-    };
-  });
+  pokemonList.value = await getPokemonList(start.value, end.value);
   filteredPokemonList.value = pokemonList.value;
 
   isLoaded.value = true;
 });
+
+provide(toggleSeenKey, markPokemonAsSeen);
+provide(toggleCaughtKey, markPokemonAsCaught);
 </script>
 
 <template>
@@ -78,5 +62,3 @@ onBeforeMount(async () => {
     <Spinner v-else />
   </div>
 </template>
-
-<style></style>
