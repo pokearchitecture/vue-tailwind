@@ -4,6 +4,8 @@ import { PokemonCardViewModel } from '../PokemonCardViewModel';
 import { useSearch } from './useSearchSort';
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/vue/solid';
 import { SortValues } from './SortValues';
+import Toggle from '../Toggle.vue';
+import Checkbox from '../Checkbox.vue';
 
 const props = defineProps<{
   items: Array<PokemonCardViewModel>;
@@ -26,11 +28,29 @@ const {
   lastNameSortValue,
   onDexNumberSort,
   onNameSort,
+  filterSeen,
+  filterCaught,
 } = useSearch(props.items);
 
 watchEffect(() => {
   emit('update:filteredList', filteredList.value);
 });
+
+function toggleCaught(isToggled: boolean) {
+  filterCaught.value = isToggled;
+
+  if (isToggled) {
+    filterSeen.value = true;
+  }
+}
+
+function toggleSeen(isToggled: boolean) {
+  filterSeen.value = isToggled;
+
+  if (!isToggled) {
+    filterCaught.value = false;
+  }
+}
 </script>
 
 <template>
@@ -91,6 +111,20 @@ watchEffect(() => {
           <div class="text-white ml-2">Name</div>
         </div>
       </button>
+
+      <div class="pl-3 flex">
+        <Checkbox
+          label="Seen"
+          v-model:is-checked="filterSeen"
+          @update:is-checked="toggleSeen"
+        />
+        <Checkbox
+          label="Caught"
+          v-model:is-checked="filterCaught"
+          @update:is-checked="toggleCaught"
+          class="ml-2"
+        />
+      </div>
     </div>
   </div>
 </template>

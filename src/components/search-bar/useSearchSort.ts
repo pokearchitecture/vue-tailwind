@@ -9,6 +9,8 @@ export function useSearch(items: Array<PokemonCardViewModel>) {
   const activeSort = ref<SortValues>(SortValues.DexNumberAscending);
   const lastDexNumberSortValue = ref<SortValues>(SortValues.DexNumberAscending);
   const lastNameSortValue = ref<SortValues>(SortValues.NameAscending);
+  const filterSeen = ref(false);
+  const filterCaught = ref(false);
 
   const setDebouncedSearchText = debounce((value: string) => {
     debouncedSearchText.value = value;
@@ -28,7 +30,7 @@ export function useSearch(items: Array<PokemonCardViewModel>) {
     });
   });
 
-  const filteredList = computed(() => {
+  const sortedList = computed(() => {
     switch (activeSort.value) {
       case SortValues.DexNumberAscending:
         return [
@@ -63,6 +65,26 @@ export function useSearch(items: Array<PokemonCardViewModel>) {
           }),
         ];
     }
+  });
+
+  const filteredList = computed(() => {
+    let filteredPokemon = [...sortedList.value];
+
+    if (filterCaught.value) {
+      filteredPokemon = sortedList.value.filter((pokemon) => {
+        return pokemon.caught === true;
+      });
+
+      return filteredPokemon;
+    }
+
+    if (filterSeen.value) {
+      filteredPokemon = sortedList.value.filter((pokemon) => {
+        return pokemon.seen === true;
+      });
+    }
+
+    return filteredPokemon;
   });
 
   function onDexNumberSort() {
@@ -109,5 +131,7 @@ export function useSearch(items: Array<PokemonCardViewModel>) {
     lastNameSortValue,
     onDexNumberSort,
     onNameSort,
+    filterSeen,
+    filterCaught,
   };
 }
