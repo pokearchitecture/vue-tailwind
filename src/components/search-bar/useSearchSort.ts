@@ -25,9 +25,15 @@ export function useSearch(items: Array<PokemonCardViewModel>) {
       return items;
     }
 
-    return items.filter((item) => {
-      return item.name.includes(debouncedSearchText.value);
-    });
+    if (parseInt(debouncedSearchText.value)) {
+      return items.filter((item) => {
+        return item.id.toString() === debouncedSearchText.value;
+      });
+    } else {
+      return items.filter((item) => {
+        return item.name.includes(debouncedSearchText.value);
+      });
+    }
   });
 
   const sortedList = computed(() => {
