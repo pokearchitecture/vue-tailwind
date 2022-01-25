@@ -3,8 +3,8 @@ import NavLink from './NavLink.vue';
 </script>
 
 <template>
-  <div class="text-white text-2xl font-bold">
-    <NavLink style="margin-top: 0.19rem" to="kanto" text="Kanto" />
+  <div class="text-white text-2xl font-bold" style="padding: 1px">
+    <NavLink style="margin-top: 1px" to="kanto" text="Kanto" />
     <NavLink to="johto" text="Johto" />
     <NavLink to="hoenn" text="Hoenn" />
     <NavLink to="sinnoh" text="Sinnoh" />
