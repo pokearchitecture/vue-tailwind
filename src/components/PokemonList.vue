@@ -53,7 +53,7 @@ provide(toggleCaughtKey, markPokemonAsCaught);
       <div
         v-for="pokemon in filteredPokemonList"
         :key="pokemon.id"
-        class="mt-3 mx-2 grow"
+        class="mt-3 mx-2"
       >
         <PokemonCard :pokemon="pokemon" />
       </div>
