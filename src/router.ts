@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Kanto from './pages/Kanto.vue';
 import Johto from './pages/Johto.vue';
 import Hoenn from './pages/Hoenn.vue';
@@ -20,11 +20,11 @@ const routes = [
   { path: '/alola', component: Alola },
   { path: '/galar', component: Galar },
   { path: '/all', component: All },
-]
+];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
-})
+});
 
 export { router };
