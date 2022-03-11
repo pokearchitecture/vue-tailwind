@@ -5,6 +5,7 @@ import PokemonCard from './PokemonCard.vue';
 import SearchBar from './search-bar/SearchBar.vue';
 import Spinner from './spinner/Spinner.vue';
 import { toggleCaughtKey, toggleSeenKey } from './lib';
+import DexProgress from './DexProgress.vue';
 
 const props = defineProps({
   start: {
@@ -25,8 +26,8 @@ const {
   markPokemonAsSeen,
   markPokemonAsCaught,
 } = usePokemonList();
-let isLoaded = ref(false);
 
+let isLoaded = ref(false);
 onBeforeMount(async () => {
   pokemonList.value = await getPokemonList(start.value, end.value);
   filteredPokemonList.value = pokemonList.value;
@@ -41,6 +42,10 @@ provide(toggleCaughtKey, markPokemonAsCaught);
 <template>
   <div class="h-full">
     <div v-if="isLoaded" class="flex justify-center flex-wrap px-8 mt-4">
+      <div class="mb-3">
+        <DexProgress />
+      </div>
+
       <div class="basis-full mx-2">
         <SearchBar
           :items="pokemonList"
