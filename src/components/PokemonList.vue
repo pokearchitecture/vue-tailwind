@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount, provide, ref, toRefs } from 'vue';
-import { usePokemonList } from './pokemonGateway';
+import { usePokemonList } from '../api/pokemonGateway';
 import PokemonCard from './PokemonCard.vue';
 import SearchBar from './search-bar/SearchBar.vue';
 import Spinner from './spinner/Spinner.vue';
