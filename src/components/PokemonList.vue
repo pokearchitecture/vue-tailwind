@@ -4,7 +4,7 @@ import { usePokemonList } from '../api/pokemonGateway';
 import PokemonCard from './PokemonCard.vue';
 import SearchBar from './search-bar/SearchBar.vue';
 import Spinner from './spinner/Spinner.vue';
-import { toggleCaughtKey, toggleSeenKey } from './lib';
+import { toggleCaughtKey, toggleSeenKey } from '../api/pokemonGateway';
 import DexProgress from './DexProgress.vue';
 
 const props = defineProps({

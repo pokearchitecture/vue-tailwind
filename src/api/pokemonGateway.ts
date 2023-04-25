@@ -1,6 +1,7 @@
 import PokeAPI, { INamedApiResource, IPokemon } from 'pokeapi-typescript';
 import { Ref, ref } from 'vue';
 import { PokemonCardViewModel } from '../models/PokemonCardViewModel';
+import { InjectionKey } from 'vue';
 
 export interface RegisteredPokemon {
   id: number;
@@ -153,3 +154,11 @@ function toggleSeenOrCaught({
 
   pokemonList.value.splice(affectedPokemonIndex, 1, newPokemon);
 }
+
+type ToggleSeenFunction = (id: number, isToggled: boolean) => void;
+export const toggleSeenKey: InjectionKey<ToggleSeenFunction> =
+  Symbol('toggleSeen');
+
+type ToggleCaughtFunction = (id: number, isToggled: boolean) => void;
+export const toggleCaughtKey: InjectionKey<ToggleCaughtFunction> =
+  Symbol('toggleCaught');

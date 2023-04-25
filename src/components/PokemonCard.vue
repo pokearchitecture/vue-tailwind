@@ -2,7 +2,7 @@
 import { toRefs, PropType, ref, inject } from 'vue';
 import { PokemonCardViewModel } from '../models/PokemonCardViewModel';
 import Toggle from './Toggle.vue';
-import { toggleCaughtKey, toggleSeenKey } from './lib';
+import { toggleCaughtKey, toggleSeenKey } from '../api/pokemonGateway';
 
 const props = defineProps({
   pokemon: {
