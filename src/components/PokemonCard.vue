@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toRefs, PropType, ref, inject } from 'vue';
-import { PokemonCardViewModel } from './PokemonCardViewModel';
+import { PokemonCardViewModel } from '../models/PokemonCardViewModel';
 import Toggle from './Toggle.vue';
 import { toggleCaughtKey, toggleSeenKey } from './lib';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { watchEffect, ref } from 'vue';
-import { PokemonCardViewModel } from '../PokemonCardViewModel';
+import { PokemonCardViewModel } from '../../models/PokemonCardViewModel';
 import { useSearch } from './useSearchSort';
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/vue/20/solid';
 import { SortValues } from './SortValues';
