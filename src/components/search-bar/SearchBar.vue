@@ -54,7 +54,7 @@ function toggleSeen(isToggled: boolean) {
 
 <template>
   <div class="bg-darkgray-300 rounded-2xl overflow-hidden md:flex">
-    <div class="mb-2 w-full flex justify-center">
+    <div class="w-full flex justify-center">
       <input
         v-model="searchText"
         type="text"
@@ -65,7 +65,7 @@ function toggleSeen(isToggled: boolean) {
     </div>
 
     <div class="sm:flex sm:justify-center basis-7/12">
-      <div class="flex justify-center items-center mb-2">
+      <div class="flex justify-center items-center">
         <button
           style="width: 6rem"
           class="pr-2"
@@ -116,7 +116,7 @@ function toggleSeen(isToggled: boolean) {
         </button>
       </div>
 
-      <div class="flex justify-center items-center mr-3 mb-2">
+      <div class="flex justify-center items-center mr-3">
         <div class="pl-3 flex">
           <Checkbox
             label="Seen"
