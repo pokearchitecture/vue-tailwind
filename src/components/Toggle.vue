@@ -22,7 +22,7 @@ function emitToggledEvent(event: Event) {
     <input
       type="checkbox"
       class="invisible peer absolute left-0 top-0 h-full rounded-md"
-      v-model="isToggled"
+      :checked="isToggled"
       @change="emitToggledEvent"
     />
     <span

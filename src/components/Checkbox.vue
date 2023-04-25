@@ -26,7 +26,7 @@ function emitCheckedEvent(event: Event) {
         type="checkbox"
         name="Filter Pokemon Seen"
         class="opacity-0 invisible absolute h-8 w-8"
-        v-model="isChecked"
+        :checked="isChecked"
         @change="emitCheckedEvent"
       />
       <div

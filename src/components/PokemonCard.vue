@@ -49,13 +49,13 @@ function onCaught(isToggled: boolean) {
       <div class="pr-3">
         <Toggle
           :label="'Seen'"
-          v-model:is-toggled="pokemon.seen"
+          :is-toggled="pokemon.seen"
           @update:is-toggled="onSeen"
         />
       </div>
       <Toggle
         :label="'Caught'"
-        v-model:is-toggled="pokemon.caught"
+        :is-toggled="pokemon.caught"
         @update:is-toggled="onCaught"
       />
     </div>

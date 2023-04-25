@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Navbar from './components/nav-bar/Navbar.vue';
-import { MenuIcon, XIcon } from '@heroicons/vue/solid';
+import {
+  Bars3Icon as MenuIcon,
+  XMarkIcon as XIcon,
+} from '@heroicons/vue/20/solid';
 import { ref } from 'vue';
 
 const isNavMenuVisible = ref(false);

@@ -2,7 +2,7 @@
 import { watchEffect, ref } from 'vue';
 import { PokemonCardViewModel } from '../PokemonCardViewModel';
 import { useSearch } from './useSearchSort';
-import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/vue/solid';
+import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/vue/20/solid';
 import { SortValues } from './SortValues';
 import Checkbox from '../Checkbox.vue';
 
@@ -120,12 +120,12 @@ function toggleSeen(isToggled: boolean) {
         <div class="pl-3 flex">
           <Checkbox
             label="Seen"
-            v-model:is-checked="filterSeen"
+            :is-checked="filterSeen"
             @update:is-checked="toggleSeen"
           />
           <Checkbox
             label="Caught"
-            v-model:is-checked="filterCaught"
+            :is-checked="filterCaught"
             @update:is-checked="toggleCaught"
             class="ml-2"
           />
