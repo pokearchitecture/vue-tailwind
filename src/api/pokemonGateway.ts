@@ -1,7 +1,6 @@
-import PokeAPI, { INamedApiResource, IPokemon } from 'pokeapi-typescript';
-import { Ref, ref } from 'vue';
-import { PokemonCardViewModel } from '../models/PokemonCardViewModel';
-import { InjectionKey } from 'vue';
+import PokeAPI, { type INamedApiResource, type IPokemon } from 'pokeapi-typescript';
+import { type Ref, ref, type InjectionKey } from 'vue';
+import { type PokemonCardViewModel } from '../models/PokemonCardViewModel';
 
 export interface RegisteredPokemon {
   id: number;

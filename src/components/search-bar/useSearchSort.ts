@@ -1,5 +1,5 @@
 import { computed, ref, watch } from 'vue';
-import { PokemonCardViewModel } from '../../models/PokemonCardViewModel';
+import { type PokemonCardViewModel } from '../../models/PokemonCardViewModel';
 import debounce from 'lodash/debounce';
 import { SortValues } from './SortValues';
 
