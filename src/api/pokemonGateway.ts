@@ -1,4 +1,4 @@
-import PokeAPI, { type INamedApiResource, type IPokemon } from 'pokeapi-typescript';
+import { type NamedApiResource, type Pokemon } from 'pokeapi-typescript';
 import { type Ref, ref, type InjectionKey } from 'vue';
 import { type PokemonCardViewModel } from '../models/PokemonCardViewModel';
 
@@ -66,10 +66,10 @@ async function getPokemonFromApi(start: number, end: number) {
   }
 
   const data = await response.json();
-  return data.results as INamedApiResource<IPokemon>[];
+  return data.results as NamedApiResource<Pokemon>[];
 }
 
-function toViewModels(list: INamedApiResource<IPokemon>[]) {
+function toViewModels(list: NamedApiResource<Pokemon>[]) {
   const imageUrlRoot =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
