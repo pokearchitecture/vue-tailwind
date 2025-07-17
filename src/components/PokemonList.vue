@@ -42,9 +42,9 @@ provide(toggleCaughtKey, markPokemonAsCaught);
 <template>
   <div class="h-full">
     <div v-if="isLoaded" class="flex justify-center flex-wrap px-8 mt-4">
-      <div class="mb-3">
-        <DexProgress />
-      </div>
+<!--      <div class="mb-3">-->
+<!--        <DexProgress />-->
+<!--      </div>-->
 
       <div class="basis-full mx-2">
         <SearchBar
