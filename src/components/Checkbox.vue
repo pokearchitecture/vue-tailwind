@@ -30,7 +30,7 @@ function emitCheckedEvent(event: Event) {
         @change="emitCheckedEvent"
       />
       <div
-        class="bg-darkgray-500 border-2 rounded-lg border-darkgray-100 w-7 h-7 flex flex-shrink-0 justify-center items-center ml-2 focus-within:border-green-400"
+        class="bg-darkgray-500 border-2 rounded-lg border-darkgray-100 w-7 h-7 flex shrink-0 justify-center items-center ml-2 focus-within:border-green-400"
       >
         <svg
           class="fill-current hidden w-3 h-3 text-green-400 pointer-events-none"
@@ -56,6 +56,8 @@ function emitCheckedEvent(event: Event) {
 </template>
 
 <style scoped>
+@reference "../index.css";
+
 input:checked + div {
   @apply border-green-400 bg-darkgray-100;
 }

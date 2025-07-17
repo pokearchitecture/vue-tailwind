@@ -58,8 +58,8 @@ function toggleSeen(isToggled: boolean) {
       <input
         v-model="searchText"
         type="text"
-        class="shadow-sm text-white bg-darkgray-100 border-none rounded-lg pl-2 py-2 my-2 mx-4 flex-grow focus:ring-2 focus:ring-green-400 focus:border-green-400"
-        :class="searchText ? 'outline outline-2 outline-green-400' : ''"
+        class="shadow-xs text-white bg-darkgray-100 border-none rounded-lg pl-2 py-2 my-2 mx-4 grow focus:ring-2 focus:ring-green-400 focus:border-green-400"
+        :class="searchText ? 'outline-solid outline-2 outline-green-400' : ''"
         placeholder="Search..."
       />
     </div>
@@ -72,7 +72,7 @@ function toggleSeen(isToggled: boolean) {
           :class="
             activeSort === SortValues.DexNumberAscending ||
             activeSort === SortValues.DexNumberDescending
-              ? 'outline outline-2 outline-green-400 rounded-2xl p-1'
+              ? 'outline-solid outline-2 outline-green-400 rounded-2xl p-1'
               : ''
           "
           @click="onDexNumberSort"
@@ -96,7 +96,7 @@ function toggleSeen(isToggled: boolean) {
           :class="
             activeSort === SortValues.NameAscending ||
             activeSort === SortValues.NameDescending
-              ? 'outline outline-2 outline-green-400 rounded-2xl p-1'
+              ? 'outline-solid outline-2 outline-green-400 rounded-2xl p-1'
               : ''
           "
           @click="onNameSort"

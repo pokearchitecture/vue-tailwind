@@ -24,7 +24,7 @@ const isNavMenuVisible = ref(false);
     </header>
 
     <aside
-      class="bg-darkgray-300 w-300 lg:w-200 lg:!ml-0 absolute lg:static top-0 left-0 z-50 py-1 border-4 border-solid border-darkgray-500 transition-all"
+      class="bg-darkgray-300 w-300 lg:w-200 lg:ml-0! absolute lg:static top-0 left-0 z-50 py-1 border-4 border-solid border-darkgray-500 transition-all"
       :style="isNavMenuVisible ? 'margin-left: 0' : 'margin-left: -300px'"
     >
       <div class="flex justify-end py-1 lg:hidden" style="height: 30px">
