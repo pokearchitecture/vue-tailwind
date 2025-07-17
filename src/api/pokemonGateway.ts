@@ -56,8 +56,17 @@ export function usePokemonList() {
 }
 
 async function getPokemonFromApi(start: number, end: number) {
-  const response = await PokeAPI.Pokemon.list(end - (start - 1), start - 1);
-  return response.results;
+  const limit = end - (start - 1);
+  const offset = start - 1;
+
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+  if (!response.ok) {
+    console.error('Failed to fetch pokemon data from PokeAPI');
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.results as INamedApiResource<IPokemon>[];
 }
 
 function toViewModels(list: INamedApiResource<IPokemon>[]) {
